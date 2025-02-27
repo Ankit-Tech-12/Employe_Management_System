@@ -6,11 +6,11 @@ import { AuthContext } from "./context/AuthProvider";
 
 const App = () => {
   const [user, setUser] = useState(null);
-
   useEffect(() => {
     console.log("Current User:", user); // Logs when user state updates
   }, [user]);
-
+  const authData=useContext(AuthContext);
+  console.log(authData)
   const handleLogin = (email, pass) => {
     if (email === "admin@gmail.com" && pass === "123") {
       setUser("admin");
@@ -20,8 +20,6 @@ const App = () => {
       alert("Invalid credentials!");
     }
   }
-  const data=useContext(AuthContext);
-  console.log(data)
   return (
     <div>
       {!user && <Login handleLogin={handleLogin} />}
