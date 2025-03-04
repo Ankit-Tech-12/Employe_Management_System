@@ -5,6 +5,9 @@
     const [userData,setUserData]=useState(null);
     // const data=getLocalStorage();
     useEffect(() => {
+      if (!localStorage.getItem("employees") || !localStorage.getItem("admin")) {
+        setLocalStorage();
+      }
       const {employees,admin}=getLocalStorage();
     setUserData({employees,admin});
     }, [])

@@ -12,9 +12,9 @@ const App = () => {
   const authData=useContext(AuthContext);
   console.log(authData)
   const handleLogin = (email, pass) => {
-    if (email === "admin@gmail.com" && pass === "123") {
+    if (authData?.admin?.find((e) => email === e.email && pass === e.password)) {
       setUser("admin");
-    } else if (email === "employee@gmail.com" && pass === "123") {
+    } else if (authData?.employees?.find((e) => email === e.email && pass === e.password)) {
       setUser("employee");
     } else {
       alert("Invalid credentials!");
