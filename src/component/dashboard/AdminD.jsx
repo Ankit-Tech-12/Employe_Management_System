@@ -7,7 +7,7 @@ import AdminTaskList from '../other/AdminTaskList';
 function AdminD() {
   return (
     <>
-    <div className='h-screen w-full p-8'>
+    <div className='w-full p-8'>
         <HeaderD/>
         <div className='flex justify-between'>
         <CreateTask/>
