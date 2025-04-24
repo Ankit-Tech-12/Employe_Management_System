@@ -4,7 +4,7 @@ import HeaderD from '../other/HeaderD'
 import TaskList from '../other/TaskList'
 
 const EmployeeD = ({data}) => {
-    console.log(data);
+    // console.log(data);
     return (
         <>
             <div className='w-1/2 m-auto p-5 bg-[#1C1C1C]'>
