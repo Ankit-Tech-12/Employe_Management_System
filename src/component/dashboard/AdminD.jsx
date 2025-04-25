@@ -9,7 +9,8 @@ function AdminD() {
     <>
     <div className='w-full p-8'>
         <HeaderD/>
-        <div className='flex justify-between'>
+        <div> 
+        {/* className='flex justify-between' */}
         <CreateTask/>
         <AdminTaskList/>
         </div>

@@ -10,16 +10,16 @@ function TaskList({data}) {
                     <ul className='flex flex-col'>
                         {data.tasks.map((elem,idx)=>{
                             if(elem.active){
-                               return <Accept key={idx}/>
+                               return <Accept key={idx} data={elem}/>
                             }
                             if(elem.newTask){
-                               return  <New key={idx}/>
+                               return  <New key={idx} data={elem}/>
                             }
                             if(elem.completed){
-                               return <Complete key={idx}/>
+                               return <Complete key={idx} data={elem}/>
                             }
                             if(elem.failed){
-                               return <Fail key={idx}/>
+                               return <Fail key={idx} data={elem}/>
                             }
                         })
                         }
