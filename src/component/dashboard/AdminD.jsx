@@ -4,16 +4,13 @@ import CreateTask from '../other/CreateTask';
 import TaskList from '../other/TaskList';
 import AdminTaskList from '../other/AdminTaskList';
 
-function AdminD() {
+function AdminD(props) {
   return (
     <>
     <div className='w-full p-8'>
-        <HeaderD/>
-        <div> 
-        {/* className='flex justify-between' */}
+        <HeaderD changeUser={props.changeUser}/>
         <CreateTask/>
         <AdminTaskList/>
-        </div>
     </div>
     </>
   )

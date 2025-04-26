@@ -1,16 +1,36 @@
 import React, { useState } from 'react'
 function CreateTask() {
-    const[task,setTask]=useState("");
+    const[title,setTitle]=useState("");
   const[desc,setDesc]=useState("");
   const[assign,setAssign]=useState("");
   const[category,setCategory]=useState("");
+  const[date,setDate]=useState("");
+  const[task,setTask]=useState({})
   const formhandling=(e)=>{
     e.preventDefault();
-    setTask("");
+    const newTask = {
+      title,
+      desc,
+      date,
+      category,
+      active: false,
+      newTask: true,
+      completed: false,
+      failed: false
+    };
+    setTask(newTask);
+    const data=JSON.parse(localStorage.getItem("employees"))
+    data.forEach(function(elem){
+      if(assign==elem.firstName){
+        elem.tasks.push(newTask);
+        console.log(elem);
+      }
+    });
+    setTitle("");
     setAssign("");
     setCategory("");
     setDesc("");
-    console.log("Created");
+    setDate("");
   }
   return (
     <>
@@ -21,11 +41,13 @@ function CreateTask() {
                 <div className='flex justify-between'>
                 <div className='w-[45%]'>
                 <label htmlFor="title">Task Title</label>
-                <input required id='title' name='task_title' className='px-2 w-full' type="text" placeholder='Make UI desgin' value={task} onChange={(e)=>{
-                  setTask(e.target.value)
+                <input required id='title' name='task_title' className='px-2 w-full' type="text" placeholder='Make UI desgin' value={title} onChange={(e)=>{
+                  setTitle(e.target.value)
                 }}/>
                 <label htmlFor="date">Date</label>
-                <input required className='w-full' id='date' name='date' type="date"/>
+                <input required className='w-full' id='date' name='date' type="date" value={date} onChange={(e)=>{
+                  setDate(e.target.value)
+                }}/>
                 <label htmlFor="assign">Assign to</label>
                 <input required className='w-full' id='assign' name='assign' type="text" value={assign} onChange={(e)=>{
                   setAssign(e.target.value)
