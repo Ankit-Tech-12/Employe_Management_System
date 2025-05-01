@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { AuthContext } from '../../context/AuthProvider'
 
 function AdminTaskList() {
-  let authData=useContext(AuthContext);
+  const authData=useContext(AuthContext);
   return (
     <div className='w-full mt-5'>
       <div className='bg-red-400 flex justify-between w-full rounded py-4 px-6'>

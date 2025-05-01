@@ -1,7 +1,10 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import { AuthContext } from '../../context/AuthProvider';
 function CreateTask() {
-    const[title,setTitle]=useState("");
-  const[desc,setDesc]=useState("");
+  // const authData=useContext(AuthContext);
+  const {employees,refreshUserData}=useContext(AuthContext);
+  const[title,setTitle]=useState("");
+  const[description,setDescription]=useState("");
   const[assign,setAssign]=useState("");
   const[category,setCategory]=useState("");
   const[date,setDate]=useState("");
@@ -10,7 +13,7 @@ function CreateTask() {
     e.preventDefault();
     const newTask = {
       title,
-      desc,
+      description,
       date,
       category,
       active: false,
@@ -23,13 +26,18 @@ function CreateTask() {
     data.forEach(function(elem){
       if(assign==elem.firstName){
         elem.tasks.push(newTask);
+        elem.newTasks=elem.newTasks+1;
+        elem.taskCount=elem.taskCount+1;
         console.log(elem);
       }
     });
+    // console.log(data)
+    localStorage.setItem("employees",JSON.stringify(data))
+    refreshUserData();
     setTitle("");
     setAssign("");
     setCategory("");
-    setDesc("");
+    setDescription("");
     setDate("");
   }
   return (
@@ -59,8 +67,8 @@ function CreateTask() {
                 </div>
                 <div className='w-[45%]'>
                 <label htmlFor="description">Description</label>
-                <textarea className='w-full' rows={8} maxLength={500} placeholder='Detail description of task' name="description" id="description" value={desc} onChange={(e)=>{
-                  setDesc(e.target.value)
+                <textarea className='w-full' rows={8} maxLength={500} placeholder='Detail description of task' name="description" id="description" value={description} onChange={(e)=>{
+                  setDescription(e.target.value)
                 }}></textarea>
                 <button type='submit' className='w-full h-13 font-bold bg-green-500'>Create task</button>
                 </div>

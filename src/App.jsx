@@ -7,7 +7,7 @@ import { AuthContext } from "./context/AuthProvider";
 const App = () => {
   const [user, setUser] = useState(null);
   const [loggedInUserData,setLoggedInUserData]=useState(null);
-  const authData = useContext(AuthContext);
+  const authData=useContext(AuthContext);
   useEffect(() => {
     if(authData){
     const loggedInUser=localStorage.getItem("loggedInUser");
@@ -19,7 +19,7 @@ const App = () => {
     }
   }, [authData]);
 
-  if (!authData?.employees || !authData?.admin) return <p>Loading...</p>;
+  // if (!authData?.employees || !authData?.admin) return <p>Loading...</p>;
 
   const handleLogin = (email, pass) => {
     const normalizedEmail = email.toLowerCase().trim();
